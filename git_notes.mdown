@@ -1,0 +1,289 @@
+## Sep 13 lecture notes
+## Git
+    git version
+    git config --global user.name “Xinyu Zhang”
+
+>Xinyus-MacBook-Air:stat159-hw01 MandyZhang$ git config --global user.name "Xinyu Zhang"
+>Xinyus-MacBook-Air:stat159-hw01 MandyZhang$ git config --global user.email "mandy.zhang512@gmail.com"
+>git config --global color.ui true
+>git config --global core.editor "nano"
+
+*create a new txt file
+    vim file1.txt
+
+create a new repository 从这儿开始commit
+Xinyus-MacBook-Air:stat159-hw01 MandyZhang$ git init
+Initialized empty Git repository in /Users/MandyZhang/Desktop/stat_159/stat159-hw01/.git/
+
+copy an existing repository
+Xinyus-MacBook-Air:git-demo MandyZhang$ git clone https://github.com/MandyZhangxy/stat159-fall-2016
+
+
+
+git gonna track all changes in directory
+
+ls .git
+Xinyus-MacBook-Air:stat159-hw01 MandyZhang$ ls .git
+HEAD		config		hooks		objects
+branches	description	info		refs
+
+git add file1.txt
+git commit -m "INitial commit"
+Xinyus-MacBook-Air:stat159-hw01 MandyZhang$ git commit -m "Initial commit/my first commit"
+[master (root-commit) 7a7fac0] Initial commit/my first commit
+ 1 file changed, 6 insertions(+)
+ create mode 100644 file1.txt
+
+word count:
+Xinyus-MacBook-Air:stat159-hw01 MandyZhang$ wc -l file1.txt
+       6 file1.txt
+
+copy text file:
+Xinyus-MacBook-Air:stat159-hw01 MandyZhang$ cp file1.txt file2.txt
+
+Xinyus-MacBook-Air:stat159-hw01 MandyZhang$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	1st_aid.txt
+	Fisher.csv
+	beesherb.txt
+	bread.txt
+	btaco.txt
+	cars.csv
+	file2.txt
+	forestfires.csv
+	stat159-hw01-Xinyu-Zhang.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+* git add: it's like a snapshot/ taking a photo in staging area
+Xinyus-MacBook-Air:stat159-hw01 MandyZhang$ git add file2.txt
+
+>Xinyus-MacBook-Air:stat159-hw01 MandyZhang$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	new file:   file2.txt
+
+>Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	1st_aid.txt
+	Fisher.csv
+	beesherb.txt
+	bread.txt
+	btaco.txt
+	cars.csv
+	forestfires.csv
+	stat159-hw01-Xinyu-Zhang.txt
+
+* git commit: send them to database/ sotred photo in repository. Then get commit numbers
+
+>Xinyus-MacBook-Air:stat159-hw01 MandyZhang$ git commit -m "add copy of file1.txt"
+[master 9e0c3d3] add copy of file1.txt
+ 1 file changed, 6 insertions(+)
+ create mode 100644 file2.txt
+
+>Xinyus-MacBook-Air:stat159-hw01 MandyZhang$ git status
+>On branch master
+>Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	1st_aid.txt
+	Fisher.csv
+	beesherb.txt
+	bread.txt
+	btaco.txt
+	cars.csv
+	forestfires.csv
+	stat159-hw01-Xinyu-Zhang.txt
+>nothing added to commit but untracked files present (use "git add" to track) nothing to commit, working directory clean
+
+* git add 
+>Xinyus-MacBook-Air:stat159-hw01 MandyZhang$ git add file3.txt 
+Xinyus-MacBook-Air:stat159-hw01 MandyZhang$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	new file:   file3.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	1st_aid.txt
+	Fisher.csv
+	beesherb.txt
+	bread.txt
+	btaco.txt
+	cars.csv
+	forestfires.csv
+	stat159-hw01-Xinyu-Zhang.txt
+
+
+Xinyus-MacBook-Air:stat159-hw01 MandyZhang$ cat file1.txt
+first line
+2
+3
+4
+5
+6
+
+
+Xinyus-MacBook-Air:stat159-hw01 MandyZhang$ git checkout -- file1.txt
+
+Xinyus-MacBook-Air:stat159-hw01 MandyZhang$ git commit -m "add new content to file3.txt"
+[master d919f66] add new content to file3.txt
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 file3.txt
+
+git add code/. (code is a directory)
+git status
+
+git commit -m "[R]: add script.R"
+
+
+#####
+git log
+
+
+Xinyus-MacBook-Air:stat159-hw01 MandyZhang$ git log -n 3
+commit 7374f8b9532388f36bdc9aeb92125e08aa968fb5
+Author: Xinyu Zhang <mandy.zhang512@gmail.com>
+Date:   Tue Sep 13 14:45:00 2016 -0700
+
+    [R]: add script.R
+
+commit d919f6608ca23493235c89622a9809fc17e23623
+Author: Xinyu Zhang <mandy.zhang512@gmail.com>
+Date:   Tue Sep 13 14:41:23 2016 -0700
+
+    add new content to file3.txt
+
+commit 9e0c3d39c3ee535b454a268bf15b43975dacee6d
+Author: Xinyu Zhang <mandy.zhang512@gmail.com>
+Date:   Tue Sep 13 14:33:34 2016 -0700
+
+    add copy of file1.txt
+
+Xinyus-MacBook-Air:stat159-hw01 MandyZhang$ git log --until="2016-09-13"
+Xinyus-MacBook-Air:stat159-hw01 MandyZhang$ git log --author="Zhang"
+
+Xinyus-MacBook-Air:stat159-hw01 MandyZhang$ git commit -m "added files"
+
+## to create 5th to 9th file: totally 5 files
+Xinyus-MacBook-Air:stat159-hw01 MandyZhang$ touch file{5..9}.txt
+
+Xinyus-MacBook-Air:init-jackson MandyZhang$ git pull origin master
+
+
+## Sep 15 lecture notes
+
+subl file1.md
+
+* git diff file1.md 
+>show what changed in the file. no old content.
+
+* git diff --staged file1.md
+* git diff --cached file1.md
+
+git log
+
+git add
+
+git commit
+
+git diff
+
+git log
+
+git status
+
+* develop shorthand notation style:
+
+- "[py,r]"  R, python
+- 
+- 
+- 
+
+
+# undoing changes
+
+*file2 has the same content as file1
+    cat file1.md > file2.md
+
+
+* what does >> mean?
+    cat file1.md >> file2.md
+
+* undo changes to specific file
+    git checkout -- file2.md
+    cat file2.md
+    git status
+
+* when already added: git add file2.md
+    git reset HEAD file2.md
+then everything go bakc to unadded:
+    git status
+    cat file2.md
+    git commit -m "Copy content of file 1 to file2"
+
+* git log
+    git log -n 3
+    git log --oneline -3 (specify how many commits i.e: 3)
+
+
+* copy files
+    cp file1.md file3.md
+
+*recover previously version
+    git log --online -5
+    git checkout (commit number before changes) --file2.md
+    cat file2.md
+
+* recover to initially created
+    git reset HEAD file2.md
+    git status
+    cat file2.md
+
+* create a new branch on terminal:
+    git remote add origin "link from your repository"
+    git pull origin master
+    git checkout -b "lab3"
+
+* review our changes before saving them. We do this using git diff. This shows us the differences between the current state of the file and the most recently saved version:
+    git diff
+
+* after deleting files "mars"
+    git rm mars
+    git status
+    git commit -m "deleting mars"
+    git push origin lab3
+
+* there’s no difference between what it’s been asked to save permanently and what’s currently in the directory.
+    git diff
+
+* difference between the last committed change and what’s in the staging area
+    git diff --staged
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
